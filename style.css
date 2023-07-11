@@ -1,8 +1,12 @@
 body{
     background-color: aqua;
+    margin: 0;
+    padding: 0;
 }
 header{
     display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 #gameboard {
@@ -10,8 +14,7 @@ header{
     flex-direction: column;
     align-items: center;
     border-radius: 25px;
-    background-color: black;
-
+    width:auto;
   }
   
   .row {
@@ -19,32 +22,39 @@ header{
     flex-direction: row;
   }
   
-  .button {
-    width: 100px;
-    height: 100px;
+  .buttons {
+    width: 200px;
+    height: 200px;
     margin: 10px;
     cursor: pointer;
+  }
+
+  #startButton{
+    width: 100px;
+    height: 100px;
+    border-radius: px;
+    margin-top: 10px;
   }
   
   #green {
     background-color: green;
-    border-radius: 50px 0 0 0;
+    border-radius: 200px 0 0 0;
   }
   
   #red {
     background-color: red;
-    border-radius:  0 50px 0 0;
+    border-radius:  0 200px 0 0;
   }
   
   #yellow {
     background-color: yellow;
-    border-radius:  0  0 0 50px ;
+    border-radius:  0  0 0 200px ;
 
   }
   
   #blue {
     background-color: blue;
-    border-radius:  0  0 50px 0;
+    border-radius:  0  0 200px 0;
 
   }
   
