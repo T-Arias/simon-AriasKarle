@@ -9,20 +9,24 @@
 <body>
     <header>
         <h1>Simon Game</h1>
+        <div id="scores">
+          <p id="sesion">Puntuación anterior: 0</p>
+          <p id="historic">Puntuación histórica: 100</p>
+        </div>
     </header>
     <main>
-        <div id="gameboard">
+        <section id="gameboard">
           <div class="row">
-            <div class="button" id="green"></div>
-            <div class="button" id="red"></div>
+            <button class="buttons" id="green"></button>
+            <button class="buttons" id="red"></button>
           </div>
           <div class="row">
-            <div class="button" id="yellow"></div>
-            <div class="button" id="blue"></div>
+            <button class="buttons" id="yellow"></button>
+            <button class="buttons" id="blue"></button>
           </div>
-        </div>
-        <p id="score">Score: 0</p>
-        <button id="startButton">Start Game</button>
+          <button id="startButton">Start Game</button>
+        </section>
+        <p id="score">Puntuación: 0</p>
     </main>
     <footer>
 
