@@ -1,6 +1,7 @@
 var randomArray = [];
 var inputArray = [];
 var acum = 0;
+var level = 0;
 var score = 0;
 var SesionScore = 0;
 var btnStart = document.getElementById('startButton');
@@ -11,11 +12,8 @@ var redBtn = document.getElementById('red');
 var blueBtn = document.getElementById('blue');
 var yellowBtn = document.getElementById('yellow');
 //Score
+var levelHTML = document.getElementById('level');
 var scoreHTML = document.getElementById('score');
-//score hisotorico
-var scoreHistoric = document.getElementById('historic');
-//score hisotorico
-var scoreSesion = document.getElementById('sesion');
 
 
 /* var body = document.getElementsByTagName('body');
@@ -34,6 +32,7 @@ function startGame() {
     randomArray = [];
     inputArray = [];
     acum = 0;
+    level = 0;
     score = 0;
     newSecuence(1000);
 }
@@ -150,15 +149,15 @@ function btnPlayerLogic() {
         console.log('Viene bien la secuencia');
         console.log('La que pongo: ',inputArray[acum],' la random: ',randomArray[acum]);
         acum++;
+        score++;
+        scoreHTML.innerText ='Puntaje: '+score;
         if (acum===randomArray.length) {
-            score++;
-            scoreHTML.innerText ='Puntuación: '+score;
-            console.log(score);
+            level++;
+            levelHTML.innerText ='nivel: '+level;
+            console.log(level);
             newSecuence(1000);
         }
     } else {
-        scoreSesion.textContent ='Puntuación anterior: '+score;
-        scoreHTML.innerText ='Puntuación: '+score;
-        alert('Perdiste: \n'+'Maxima puntuación: '+score);
+        alert('Perdiste: \n'+'puntuación: '+score +'\nnivel: '+level);
     }
 }
