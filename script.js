@@ -11,9 +11,13 @@ var greenBtn = document.getElementById('green');
 var redBtn = document.getElementById('red');
 var blueBtn = document.getElementById('blue');
 var yellowBtn = document.getElementById('yellow');
-//Score
+//puntuacion y nivel y nivel
 var levelHTML = document.getElementById('level');
 var scoreHTML = document.getElementById('score');
+//modal
+var modal = document.getElementById('modal');
+var modalMsj = document.getElementById('modalMsj');
+var modalBtn = document.getElementById('modalBtn');
 
 
 /* var body = document.getElementsByTagName('body');
@@ -29,6 +33,7 @@ function addHistoric() {
 
 btnStart.addEventListener('click', startGame);
 function startGame() {
+    modal.style.display = 'none';
     randomArray = [];
     inputArray = [];
     acum = 0;
@@ -37,6 +42,7 @@ function startGame() {
     newSecuence(1000);
 }
 
+//funcion que muestra la secuencia
 function newSecuence(timeInterval) {
     random();
     acum =0;
@@ -46,13 +52,12 @@ function newSecuence(timeInterval) {
     blueBtn.disabled = true;
     yellowBtn.disabled = true;
     var interval = setInterval(function () {
+        console.log('longitud del arreglo: '+randomArray.length + ' acum: '+ acum);
         if (randomArray.length !== acum) {
             //Muestro la secuencia
             light(randomArray[acum],800);
             acum++;
-            console.log('SIGO ACA');
         } else {
-            console.log('PASE ACA');
             //Habilito la secuencia para que el jugador pueda seleccionar la suya
             greenBtn.disabled = false;
             redBtn.disabled = false;
@@ -71,26 +76,21 @@ function light(arr,timeout) {
         case 0:
             btnSimon[arr].style.backgroundColor = 'rgb(0, 255, 0)';
             setTimeout(defaultLight, timeout);
-            console.log(btnSimon[arr]);
             break;
         case 1:
             btnSimon[arr].style.backgroundColor = 'rgb(255, 0, 0)';
             setTimeout(defaultLight, timeout);
-            console.log(btnSimon[arr]);
             break;
         case 2:
             btnSimon[arr].style.backgroundColor = 'rgb(255, 255, 0)';
             setTimeout(defaultLight, timeout);
-            console.log(btnSimon[arr]);
             break;
         case 3:
             btnSimon[arr].style.backgroundColor = 'rgb(0, 0,255)';
             setTimeout(defaultLight, timeout);
-            console.log(btnSimon[arr]);
             break;
 
         default:
-            console.log('Aca no tuvo que pasar');
             break;
     }
 }
@@ -135,7 +135,6 @@ function btnSequence() {
             break;
 
         default:
-            console.log('No deberia pasar por aca');
             break;
     }
 
@@ -146,18 +145,21 @@ function btnSequence() {
 
 function btnPlayerLogic() {
     if (inputArray[acum]===randomArray[acum]) {
-        console.log('Viene bien la secuencia');
-        console.log('La que pongo: ',inputArray[acum],' la random: ',randomArray[acum]);
         acum++;
         score++;
         scoreHTML.innerText ='Puntaje: '+score;
         if (acum===randomArray.length) {
             level++;
             levelHTML.innerText ='nivel: '+level;
-            console.log(level);
             newSecuence(1000);
         }
     } else {
-        alert('Perdiste: \n'+'puntuación: '+score +'\nnivel: '+level);
+        scoreHTML.innerText ='Puntaje: '+0;
+        levelHTML.innerText ='nivel: '+0;
+        modal.style.display = 'block';
+        modalMsj.innerText = 'puntuación: '+score +'\nnivel: '+level;
     }
+
+    //capturo el evento del boton del modal y  reinicio el juego
+    modalBtn.addEventListener('click',startGame);
 }
