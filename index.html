@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Simon Game</h1>
-    </header>
-    <main>
-        <section id="gameboard">
-          <div class="row">
-            <button class="buttons" id="green"></button>
-            <button class="buttons" id="red"></button>
-          </div>
-          <div class="row">
-            <button class="buttons" id="yellow"></button>
-            <button class="buttons" id="blue"></button>
-          </div>
-          <button id="startButton">Start Game</button>
-        </section>
-        <p id="level">Nivel: 0</p>
-        <p id="score">Puntaje: 0</p>
-    </main>
-    <footer>
-      <a id="linkGit" href="https://github.com/tomylov/simon-AriasKarle" target="_blank">GitHub: tomylov / simon-AriasKarle</a>
-    </footer>
-    <div id="modal">
-      <div id="modalContent">
-        <h1>perdiste</h1>
-        <p id="modalMsj">Soy un mensaje</p>
-        <button id="modalBtn">Volver a jugar</button>
-      </div>
-    
-    </div>
-  
 
-  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Simon Game</h1>
+  </header>
+  <main>
+    <div>
+      <h2 id="timeTittle">Tiempo transcurrido: </h2>
+      <p id="time">0 segundos</p>
+    </div>
+    <section id="gameboard">
+      <div class="row">
+        <button class="buttons" id="green"></button>
+        <button class="buttons" id="red"></button>
+      </div>
+      <div class="row">
+        <button class="buttons" id="yellow"></button>
+        <button class="buttons" id="blue"></button>
+      </div>
+      <button id="startButton">Start Game</button>
+    </section>
+    <p id="level">Nivel: 0</p>
+    <p id="score">Puntaje: 0</p>
+  </main>
+  <footer>
+    <a id="linkGit" href="https://github.com/tomylov/simon-AriasKarle" target="_blank">GitHub: tomylov /
+      simon-AriasKarle</a>
+  </footer>
+  <div id="modal">
+    <div id="modalContent">
+      <h1>perdiste</h1>
+      <p id="modalMsj">Soy un mensaje</p>
+      <button id="modalBtn">Volver a jugar</button>
+    </div>
+
+  </div>
+
+
+
   <script src="script.js"></script>
 </body>
+
 </html>

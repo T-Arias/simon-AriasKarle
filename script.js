@@ -4,6 +4,9 @@ var acum = 0;
 var level = 0;
 var score = 0;
 var SesionScore = 0;
+var time = 0;
+var interval;
+var intervalTime;
 var btnStart = document.getElementById('startButton');
 var btnSimon = document.getElementsByClassName('buttons');
 //los botones por individuales
@@ -18,6 +21,8 @@ var scoreHTML = document.getElementById('score');
 var modal = document.getElementById('modal');
 var modalMsj = document.getElementById('modalMsj');
 var modalBtn = document.getElementById('modalBtn');
+//Time
+var timeHTML = document.getElementById('time');
 
 
 /* var body = document.getElementsByTagName('body');
@@ -30,32 +35,46 @@ body.addEventListener('onload',function() {
 function addHistoric() {
 
 } */
-
+//capturo el evento del boton del modal y  reinicio el juego
+modalBtn.addEventListener('click', function (params) {
+    startGame()
+    modal.style.display = 'none';
+});
 btnStart.addEventListener('click', startGame);
 function startGame() {
-    modal.style.display = 'none';
+    clearInterval(intervalTime);
     randomArray = [];
     inputArray = [];
+    //cuando se reinicia la partida se restauran los valores que se muestran
     acum = 0;
-    level = 0;
+    level = 1;
     score = 0;
+    time = 0;
+    timeHTML.innerText = time + ' segundos';
+    scoreHTML.innerText = 'Puntaje: ' + score;
+    levelHTML.innerText = 'Nivel: ' + level;
     newSecuence(1000);
+    //Inicio el intervalo de tiempo
+    intervalTime = setInterval(function () {
+        time++;
+        timeHTML.innerText = time + ' segundos';
+    }, 1000);
 }
 
 //funcion que muestra la secuencia
 function newSecuence(timeInterval) {
     random();
-    acum =0;
+    acum = 0;
     //Desabilito los botones para correr la secuencia
     greenBtn.disabled = true;
     redBtn.disabled = true;
     blueBtn.disabled = true;
     yellowBtn.disabled = true;
-    var interval = setInterval(function () {
-        console.log('longitud del arreglo: '+randomArray.length + ' acum: '+ acum);
+    interval = setInterval(function () {
+        console.log('longitud del arreglo: ' + randomArray.length + ' acum: ' + acum);
         if (randomArray.length !== acum) {
             //Muestro la secuencia
-            light(randomArray[acum],800);
+            light(randomArray[acum], 800);
             acum++;
         } else {
             //Habilito la secuencia para que el jugador pueda seleccionar la suya
@@ -64,14 +83,14 @@ function newSecuence(timeInterval) {
             blueBtn.disabled = false;
             yellowBtn.disabled = false;
             inputArray = [];
-            acum=0;
+            acum = 0;
             clearInterval(interval);
         }
     }, timeInterval);
 }
 
 //Funcion que se ejecuta cuando quiero prender las luces del simon
-function light(arr,timeout) {
+function light(arr, timeout) {
     switch (arr) {
         case 0:
             btnSimon[arr].style.backgroundColor = 'rgb(0, 255, 0)';
@@ -119,47 +138,43 @@ function btnSequence() {
     switch (this.id) {
         case 'green':
             inputArray.push(0);
-            light(0,100);
+            light(0, 100);
             break;
         case 'red':
             inputArray.push(1);
-            light(1,100);
+            light(1, 100);
             break;
         case 'yellow':
             inputArray.push(2);
-            light(2,100);
+            light(2, 100);
             break;
         case 'blue':
             inputArray.push(3);
-            light(3,100);
+            light(3, 100);
             break;
 
         default:
             break;
     }
 
-    if (randomArray.length!==0) {
+    if (randomArray.length !== 0) {
         btnPlayerLogic();
     }
 }
 
 function btnPlayerLogic() {
-    if (inputArray[acum]===randomArray[acum]) {
+    if (inputArray[acum] === randomArray[acum]) {
         acum++;
         score++;
-        scoreHTML.innerText ='Puntaje: '+score;
-        if (acum===randomArray.length) {
+        scoreHTML.innerText = 'Puntaje: ' + score;
+        if (acum === randomArray.length) {
             level++;
-            levelHTML.innerText ='nivel: '+level;
+            levelHTML.innerText = 'nivel: ' + level;
             newSecuence(1000);
         }
     } else {
-        scoreHTML.innerText ='Puntaje: '+0;
-        levelHTML.innerText ='nivel: '+0;
+        clearInterval(intervalTime);
         modal.style.display = 'block';
-        modalMsj.innerText = 'puntuación: '+score +'\nnivel: '+level;
+        modalMsj.innerText = 'puntuación: ' + score + '\nnivel: ' + level;
     }
-
-    //capturo el evento del boton del modal y  reinicio el juego
-    modalBtn.addEventListener('click',startGame);
 }
