@@ -36,7 +36,7 @@ function addHistoric() {
 
 } */
 //capturo el evento del boton del modal y  reinicio el juego
-modalBtn.addEventListener('click', function (params) {
+modalBtn.addEventListener('click', function () {
     startGame()
     modal.style.display = 'none';
 });
@@ -162,6 +162,7 @@ function btnSequence() {
     }
 }
 
+//funcion que valida los botones del jugador
 function btnPlayerLogic() {
     if (inputArray[acum] === randomArray[acum]) {
         acum++;
@@ -173,8 +174,17 @@ function btnPlayerLogic() {
             newSecuence(1000);
         }
     } else {
+        //detengo el tiempo
         clearInterval(intervalTime);
         modal.style.display = 'block';
+        calcScore();
         modalMsj.innerText = 'puntuación: ' + score + '\nnivel: ' + level;
     }
+}
+
+//funcion que calcula el puntaje final
+function calcScore() {
+    var penalty = Math.floor(time/30);
+    score -=penalty;
+    scoreHTML.innerText = 'puntaje: '+score;
 }
