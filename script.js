@@ -1,7 +1,9 @@
 var randomArray = [];
 var inputArray = [];
+var storage=[];
+var namePlayer='';
 var acum = 0;
-var level = 0;
+var level = 1;
 var score = 0;
 var SesionScore = 0;
 var time = 0;
@@ -25,16 +27,6 @@ var modalBtn = document.getElementById('modalBtn');
 var timeHTML = document.getElementById('time');
 
 
-/* var body = document.getElementsByTagName('body');
-body.addEventListener('onload',function() {
-    if (localStorage.length==0) {
-        addHistoric
-    }
-});
-
-function addHistoric() {
-
-} */
 //capturo el evento del boton del modal y  reinicio el juego
 modalBtn.addEventListener('click', function () {
     startGame()
@@ -179,12 +171,30 @@ function btnPlayerLogic() {
         modal.style.display = 'block';
         calcScore();
         modalMsj.innerText = 'puntuación: ' + score + '\nnivel: ' + level;
+        pushStorage();
     }
 }
-
 //funcion que calcula el puntaje final
 function calcScore() {
-    var penalty = Math.floor(time/30);
-    score -=penalty;
-    scoreHTML.innerText = 'puntaje: '+score;
+    var penalty = Math.floor(time / 30);
+    score -= penalty;
+    scoreHTML.innerText = 'puntaje: ' + score;
+}
+
+function pushStorage() {
+    //traigo los storages
+    if (localStorage.length !== 0) {
+        storage = JSON.parse(localStorage.getItem('games'));
+    }
+    namePlayer='tomas';
+    var game ={
+        player:namePlayer,
+        score:score,
+        level:level,
+        datetime: new Date().toLocaleString()
+    };
+
+    storage.push(game);
+    //guardo los datos de la partida anterior
+    localStorage.setItem('games',JSON.stringify(storage));
 }
