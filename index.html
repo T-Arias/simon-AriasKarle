@@ -10,7 +10,16 @@
 
 <body>
   <header>
-    <h1>Simon Game</h1>
+    <h1 id="tittle">Bienvenido:</h1>
+      <form id="formName">
+        <label for="userName">ingrese su nombre de usuario para jugar (3 caracteres minimo)</label>
+        <input type="text" name="userName" id="userName" placeholder="nombre de usuario">
+        <button id="play" type="button" disabled>jugar</button>
+      </form>
+    <nav>
+      <span id="">🏆</span>
+      <span id="">📲</span>
+    </nav>
   </header>
   <main>
     <div>
@@ -26,7 +35,7 @@
         <button class="buttons" id="yellow"></button>
         <button class="buttons" id="blue"></button>
       </div>
-      <button id="startButton">Start Game</button>
+      <button id="startButton" disabled>Start Game</button>
     </section>
     <p id="level">Nivel: 0</p>
     <p id="score">Puntaje: 0</p>

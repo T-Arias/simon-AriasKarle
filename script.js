@@ -1,7 +1,7 @@
 var randomArray = [];
 var inputArray = [];
-var storage=[];
-var namePlayer='';
+var storage = [];
+var namePlayer = '';
 var acum = 0;
 var level = 1;
 var score = 0;
@@ -25,12 +25,51 @@ var modalMsj = document.getElementById('modalMsj');
 var modalBtn = document.getElementById('modalBtn');
 //Time
 var timeHTML = document.getElementById('time');
+//furmulario nombre
+var formName = document.getElementById('formName');
+var tittleHTML = document.getElementById('tittle');
+var inputName = document.getElementById('userName');
+var btnPlay = document.getElementById('play');
+
+
+//capturo el input del nombre de usuario
+inputName.addEventListener('keyup', namePlus);
+//funcion que escribe en el titulo el nombre apenas se escribe en el input
+function namePlus() {
+    tittleHTML.innerText = 'Bienvenido: ' + inputName.value;
+    //se habilita el boton cuando tiene 3 caracteres
+    if (inputName.value.length >= 3) {
+        btnPlay.disabled = false;
+    } else {
+        btnPlay.disabled = true;
+    }
+}
+
+//cambio de color el recuadro del input
+inputName.addEventListener('blur', nameInput);
+function nameInput() {
+    if (inputName.value.length < 3) {
+        inputName.style.border = '1px solid red';
+    } else {
+        inputName.style.border = '1px solid black';
+    }
+}
+
+//logica del boton jugar
+btnPlay.addEventListener('click', play);
+function play() {
+    formName.style.display = 'none';
+    namePlayer = inputName.value;
+    btnStart.disabled = false;
+    tittleHTML.innerText = 'Simon game'
+    startGame();
+}
 
 
 //capturo el evento del boton del modal y  reinicio el juego
 modalBtn.addEventListener('click', function () {
-    startGame()
     modal.style.display = 'none';
+    startGame();
 });
 btnStart.addEventListener('click', startGame);
 function startGame() {
@@ -186,15 +225,14 @@ function pushStorage() {
     if (localStorage.length !== 0) {
         storage = JSON.parse(localStorage.getItem('games'));
     }
-    namePlayer='tomas';
-    var game ={
-        player:namePlayer,
-        score:score,
-        level:level,
+    var game = {
+        player: namePlayer,
+        score: score,
+        level: level,
         datetime: new Date().toLocaleString()
     };
 
     storage.push(game);
     //guardo los datos de la partida anterior
-    localStorage.setItem('games',JSON.stringify(storage));
+    localStorage.setItem('games', JSON.stringify(storage));
 }
