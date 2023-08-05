@@ -31,6 +31,10 @@ header {
   text-align: center;
 }
 
+.spanModal{
+  cursor: pointer;
+}
+
 /* MAIN */
 
 #scores {
@@ -134,9 +138,17 @@ footer{
   cursor: pointer;
 }
 
+.modalHeader{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  width: 100%;
+  justify-content: space-between;
+}
 /* MODAL DEL CONTACTO */
 
 #modalContact{
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -147,13 +159,6 @@ footer{
   background-color: rgba(0,0,0,0.4);
 }
 
-#contactHeader{
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid black;
-  width: 100%;
-  justify-content: space-between;
-}
 
 #formCotact{
   display: flex;

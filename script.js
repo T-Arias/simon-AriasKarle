@@ -23,6 +23,7 @@ var scoreHTML = document.getElementById('score');
 var modal = document.getElementById('modal');
 var modalMsj = document.getElementById('modalMsj');
 var modalBtn = document.getElementById('modalBtn');
+var closeRestart = document.getElementById('closeModal');
 //Time
 var timeHTML = document.getElementById('time');
 //furmulario nombre
@@ -36,6 +37,11 @@ var emailContact = document.getElementById('emailContact');
 var msgContact = document.getElementById('msgContact');
 var sendContact = document.getElementById('sendBtnContact');
 var cancelContact = document.getElementById('cancelBtnContact');
+var closeContact = document.getElementById('closeContact');
+var modalContact = document.getElementById('modalContact');
+//abrir contacto-ranking
+var btnContact = document.getElementById('contact');
+var btnRanking = document.getElementById('ranking');
 
 /* INPUT ANTES DE ARRANCA */
 //capturo el input del nombre de usuario
@@ -43,7 +49,7 @@ inputName.addEventListener('keyup', namePlus);
 //funcion que escribe en el titulo el nombre apenas se escribe en el input
 function namePlus() {
     tittleHTML.innerText = 'Bienvenido: ' + inputName.value;
-    //se habilita el boton cuando tiene 3 caracteres
+    //se habilita el boton jugar cuando tiene 3 caracteres
     if (inputName.value.length >= 3) {
         btnPlay.disabled = false;
     } else {
@@ -51,7 +57,7 @@ function namePlus() {
     }
 }
 
-//cambio de color el recuadro del input
+//cambio de color el borde del input
 inputName.addEventListener('blur', nameInput);
 function nameInput() {
     if (inputName.value.length < 3) {
@@ -79,6 +85,18 @@ function sendMail() {
     var mail = 'mailto: '+emailContact.value +'?subject='+subject+'&body='+body;
     window.location.href=mail;
 }
+cancelContact.addEventListener('click',closeModalContact);
+closeContact.addEventListener('click',closeModalContact);
+function closeModalContact() {
+    modalContact.style.display='none';
+}
+
+btnContact.addEventListener('click',openContact);
+function openContact() {
+    modalContact.style.display='block';
+}
+
+
 
 /* JUEGO */
 //capturo el evento del boton del modal y  reinicio el juego
@@ -228,12 +246,22 @@ function btnPlayerLogic() {
         pushStorage();
     }
 }
+
 //funcion que calcula el puntaje final
 function calcScore() {
     var penalty = Math.floor(time / 30);
     score -= penalty;
     scoreHTML.innerText = 'puntaje: ' + score;
 }
+
+/* MODAL RESTARTGAME */
+closeRestart.addEventListener('click',closeRestartGame);
+function closeRestartGame() {
+    modal.style.display='none';
+    
+}
+
+/* LOCAL STORAGE */
 
 function pushStorage() {
     //traigo los storages

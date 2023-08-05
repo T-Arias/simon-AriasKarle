@@ -17,8 +17,8 @@
       <button id="play" type="button" disabled>jugar</button>
     </form>
     <nav>
-      <span id="">🏆</span>
-      <span id="">📲</span>
+      <span class="spanModal" id="ranking">🏆</span>
+      <span class="spanModal" id="contact">📲</span>
     </nav>
   </header>
   <main>
@@ -46,9 +46,9 @@
   </footer>
   <div id="modalContact" class="modal">
     <div class="modalContent">
-      <div id="contactHeader">
+      <div class="modalHeader">
         <h2>Contacto</h2>
-        <span id="close" class="close">x</span>
+        <span id="closeContact" class="close">x</span>
       </div>
       <form action="" id="formCotact">
         <div>
@@ -73,7 +73,10 @@
 
   <div id="modal" class="modal">
     <div class="modalContent">
-      <h1>perdiste</h1>
+      <div class="modalHeader">
+        <h1>perdiste</h1>
+        <span id="closeModal" class="close">x</span>
+      </div>
       <p id="modalMsj">Soy un mensaje</p>
       <button id="modalBtn">Volver a jugar</button>
     </div>
