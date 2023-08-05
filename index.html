@@ -11,11 +11,11 @@
 <body>
   <header>
     <h1 id="tittle">Bienvenido:</h1>
-      <form id="formName">
-        <label for="userName">ingrese su nombre de usuario para jugar (3 caracteres minimo)</label>
-        <input type="text" name="userName" id="userName" placeholder="nombre de usuario">
-        <button id="play" type="button" disabled>jugar</button>
-      </form>
+    <form id="formName">
+      <label for="userName">ingrese su nombre de usuario para jugar (3 caracteres minimo)</label>
+      <input type="text" name="userName" id="userName" placeholder="nombre de usuario">
+      <button id="play" type="button" disabled>jugar</button>
+    </form>
     <nav>
       <span id="">🏆</span>
       <span id="">📲</span>
@@ -44,18 +44,41 @@
     <a id="linkGit" href="https://github.com/tomylov/simon-AriasKarle" target="_blank">GitHub: tomylov /
       simon-AriasKarle</a>
   </footer>
-  <div id="modal">
-    <div id="modalContent">
+  <div id="modalContact" class="modal">
+    <div class="modalContent">
+      <div id="contactHeader">
+        <h2>Contacto</h2>
+        <span id="close" class="close">x</span>
+      </div>
+      <form action="" id="formCotact">
+        <div>
+          <label for="nameContact">Nombre:</label>
+          <input type="text" placeholder="nombre y apellido" id="nameContact" required>
+        </div>
+        <div>
+          <label for="emailContact">Email:</label>
+          <input type="email" placeholder="@example.com" id="emailContact" required>
+        </div>
+        <div id="divMsgForm">
+          <label for="msgContact">Mensaje:</label>
+          <textarea name="msgContact" id="msgContact" rows="8" required></textarea>
+        </div>
+        <div id="formBtn">
+          <button type="button" id="cancelBtnContact">Cancelar</button>
+          <button type="button" id="sendBtnContact" >Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modalContent">
       <h1>perdiste</h1>
       <p id="modalMsj">Soy un mensaje</p>
       <button id="modalBtn">Volver a jugar</button>
     </div>
 
   </div>
-
-
-
   <script src="script.js"></script>
 </body>
-
 </html>

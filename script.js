@@ -11,7 +11,7 @@ var interval;
 var intervalTime;
 var btnStart = document.getElementById('startButton');
 var btnSimon = document.getElementsByClassName('buttons');
-//los botones por individuales
+//los botones por individuales del simon
 var greenBtn = document.getElementById('green');
 var redBtn = document.getElementById('red');
 var blueBtn = document.getElementById('blue');
@@ -30,8 +30,14 @@ var formName = document.getElementById('formName');
 var tittleHTML = document.getElementById('tittle');
 var inputName = document.getElementById('userName');
 var btnPlay = document.getElementById('play');
+//formulario contacto
+var nameContact = document.getElementById('nameContact');
+var emailContact = document.getElementById('emailContact');
+var msgContact = document.getElementById('msgContact');
+var sendContact = document.getElementById('sendBtnContact');
+var cancelContact = document.getElementById('cancelBtnContact');
 
-
+/* INPUT ANTES DE ARRANCA */
 //capturo el input del nombre de usuario
 inputName.addEventListener('keyup', namePlus);
 //funcion que escribe en el titulo el nombre apenas se escribe en el input
@@ -65,7 +71,16 @@ function play() {
     startGame();
 }
 
+/* FORMULARIO CONTACTO */
+sendContact.addEventListener('click',sendMail);
+function sendMail() {
+    var subject ='LPPA SIMON - Arias Karle';
+    var body = 'Hola soy '+ nameContact.value +' y queria decir que '+ msgContact.value;
+    var mail = 'mailto: '+emailContact.value +'?subject='+subject+'&body='+body;
+    window.location.href=mail;
+}
 
+/* JUEGO */
 //capturo el evento del boton del modal y  reinicio el juego
 modalBtn.addEventListener('click', function () {
     modal.style.display = 'none';
