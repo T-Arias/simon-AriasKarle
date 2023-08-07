@@ -200,7 +200,6 @@ function newSecuence(timeInterval) {
     blueBtn.disabled = true;
     yellowBtn.disabled = true;
     interval = setInterval(function () {
-        console.log('longitud del arreglo: ' + randomArray.length + ' acum: ' + acum);
         if (randomArray.length !== acum) {
             //Muestro la secuencia
             light(randomArray[acum], 800);
@@ -382,7 +381,6 @@ theadDate.addEventListener('click', orderByDate);
 //funcion que ordena la tabla por fecha
 function orderByDate() {
     getRanking();
-    console.log('deberia ordenar');
     storage.sort(function (a, b) {
         return Date.parse(b.datetime) - Date.parse(a.datetime);
     });
