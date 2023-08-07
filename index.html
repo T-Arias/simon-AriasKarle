@@ -1,36 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Simon Game</h1>
-    </header>
-    <main>
-        <section id="gameboard">
-          <div class="row">
-            <button class="buttons" id="green"></button>
-            <button class="buttons" id="red"></button>
-          </div>
-          <div class="row">
-            <button class="buttons" id="yellow"></button>
-            <button class="buttons" id="blue"></button>
-          </div>
-          <button id="startButton">Start Game</button>
-        </section>
-        <p id="level">Nivel: 0</p>
-        <p id="score">Puntaje: 0</p>
-    </main>
-    <footer>
-      <a id="linkGit" href="https://github.com/tomylov/simon-AriasKarle/tree/main" target="_blank">GitHub: tomylov / simon-AriasKarle</a>
-    </footer>
-  
 
-  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1 id="tittle">Bienvenido:</h1>
+    <form id="formName">
+      <label for="userName">Nombre de usuario (3 caracteres minimo)</label>
+      <input type="text" name="userName" id="userName" placeholder="nombre de usuario">
+      <button id="play" type="button" disabled>jugar</button>
+    </form>
+    <div id="divButton">
+      <span class="spanModal" id="ranking">🏆 ranking</span>
+      <span class="spanModal" id="contact">📲 contacto</span>
+    </div>
+  </header>
+  <main>
+    <div id="divTimer">
+      <h2 id="timeTittle">Tiempo transcurrido: </h2>
+      <p id="time">0 segundos</p>
+    </div>
+    <section id="gameboard">
+      <div class="row">
+        <button class="buttons" id="green"></button>
+        <button class="buttons" id="red"></button>
+      </div>
+      <div class="row">
+        <button class="buttons" id="yellow"></button>
+        <button class="buttons" id="blue"></button>
+      </div>
+      <button id="startButton" disabled>Start Game</button>
+    </section>
+    <p id="player">Jugador: </p>
+    <p id="level">Nivel: 0</p>
+    <p id="score">Puntaje: 0</p>
+  </main>
+  <footer>
+    <a id="linkGit" href="https://github.com/tomylov/simon-AriasKarle" target="_blank">GitHub: tomylov /
+      simon-AriasKarle</a>
+  </footer>
+  <!-- MODAL CONTACT -->
+  <div id="modalContact" class="modal">
+    <div class="modalContent">
+      <div class="modalHeader">
+        <h2>Contacto</h2>
+        <span id="closeContact" class="close">x</span>
+      </div>
+      <form action="" id="formCotact">
+        <div>
+          <label for="nameContact">Nombre:</label>
+          <input type="text" placeholder="nombre y apellido" id="nameContact" required>
+          <p class="condition"></p>
+        </div>
+        <div>
+          <label for="emailContact">Email:</label>
+          <input type="email" placeholder="@example.com" id="emailContact" required>
+          <p class="condition"></p>
+        </div>
+        <div id="divMsgForm">
+          <label for="msgContact">Mensaje:</label>
+          <textarea name="msgContact" id="msgContact" rows="8" required></textarea>
+          <p class="condition"></p>
+        </div>
+        <div id="formBtn">
+          <button type="button" id="cancelBtnContact">Cancelar</button>
+          <button type="button" id="sendBtnContact">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL RESTART GAME -->
+  <div id="modal" class="modal">
+    <div class="modalContent">
+      <div class="modalHeader">
+        <h1>perdiste</h1>
+        <span id="closeModal" class="close">x</span>
+      </div>
+      <p id="modalMsj">Soy un mensaje</p>
+      <button id="modalBtn">Volver a jugar</button>
+    </div>
+  </div>
+  <!-- MODAL RANKING -->
+  <div id="modalRanking" class="modal">
+    <div class="modalContent">
+      <div class="modalHeader">
+        <h1>Puntuaciones</h1>
+        <span id="closeRanking" class="close">x</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th id="theadScore">Puntuacion</th>
+            <th>Nivel</th>
+            <th id="theadDate">Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
+
 </html>
