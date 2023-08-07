@@ -174,3 +174,13 @@ footer{
   width: 240px;
   height: 80px;
 }
+
+/* mensajes de error */
+.condition{
+  color: #ff0000;
+  margin: 0;
+  margin-Top: 1.5px;
+  margin-Bottom: -2.5px;
+  display: flex;
+  justify-Content: flex-start;
+}
