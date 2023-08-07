@@ -137,7 +137,7 @@ function valiEmail() {
     if (regex.test(emailContact.value) &&emailContact.value.length!==0) {
         return true;
     } else {
-        nameContact.nextElementSibling.innerText ='';
+        emailContact.nextElementSibling.innerText ='';
         inputError(emailContact,'El email debe tener un formato valido');
         return false;
     }
@@ -149,7 +149,7 @@ function valiMsgLength() {
     if (msgContact.value.length>5) {
         return true;
     } else {
-        nameContact.nextElementSibling.innerText ='';
+        msgContact.nextElementSibling.innerText ='';
         inputError(msgContact,'El mensaje debe contener 5 caracteres min.');
         return false;
     }
