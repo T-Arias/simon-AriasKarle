@@ -12,7 +12,7 @@
   <header>
     <h1 id="tittle">Bienvenido:</h1>
     <form id="formName">
-      <label for="userName">ingrese su nombre de usuario para jugar (3 caracteres minimo)</label>
+      <label for="userName">Nombre de usuario (3 caracteres minimo)</label>
       <input type="text" name="userName" id="userName" placeholder="nombre de usuario">
       <button id="play" type="button" disabled>jugar</button>
     </form>
@@ -44,6 +44,7 @@
     <a id="linkGit" href="https://github.com/tomylov/simon-AriasKarle" target="_blank">GitHub: tomylov /
       simon-AriasKarle</a>
   </footer>
+  <!-- MODAL CONTACT -->
   <div id="modalContact" class="modal">
     <div class="modalContent">
       <div class="modalHeader">
@@ -68,12 +69,13 @@
         </div>
         <div id="formBtn">
           <button type="button" id="cancelBtnContact">Cancelar</button>
-          <button type="button" id="sendBtnContact" >Enviar</button>
+          <button type="button" id="sendBtnContact">Enviar</button>
         </div>
       </form>
     </div>
   </div>
 
+  <!-- MODAL RESTART GAME -->
   <div id="modal" class="modal">
     <div class="modalContent">
       <div class="modalHeader">
@@ -83,8 +85,29 @@
       <p id="modalMsj">Soy un mensaje</p>
       <button id="modalBtn">Volver a jugar</button>
     </div>
-
+  </div>
+  <!-- MODAL RANKING -->
+  <div id="modalRanking" class="modal">
+    <div class="modalContent">
+      <div class="modalHeader">
+        <h1>Puntuaciones</h1>
+        <span id="closeRanking" class="close">x</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th id="theadScore">Puntuacion</th>
+            <th>Nivel</th>
+            <th id="theadDate">Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
+
 </html>

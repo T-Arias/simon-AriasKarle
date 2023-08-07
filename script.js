@@ -42,6 +42,12 @@ var modalContact = document.getElementById('modalContact');
 //abrir contacto-ranking
 var btnContact = document.getElementById('contact');
 var btnRanking = document.getElementById('ranking');
+//ranking
+var tableBody = document.getElementById('tableBody');
+var modalRanking = document.getElementById('modalRanking');
+var theadDate = document.getElementById('theadDate');
+var theadScore = document.getElementById('theadScore');
+var closeRanking = document.getElementById('closeRanking');
 
 /* INPUT ANTES DE ARRANCA */
 //capturo el input del nombre de usuario
@@ -79,35 +85,35 @@ function play() {
 }
 
 /* FORMULARIO CONTACTO */
-sendContact.addEventListener('click',sendMail);
+sendContact.addEventListener('click', sendMail);
 //funcion que abre mail del sistema
 function sendMail() {
-    if (valiAlphaNumeric()&&valiEmail()&&valiMsgLength()) {
-        var subject ='LPPA SIMON - Arias Karle';
-        var body = 'Hola soy '+ nameContact.value +' y queria decir que '+ msgContact.value;
-        var mail = 'mailto: '+emailContact.value +'?subject='+subject+'&body='+body;
-        window.location.href=mail;
+    if (valiAlphaNumeric() && valiEmail() && valiMsgLength()) {
+        var subject = 'LPPA SIMON - Arias Karle';
+        var body = 'Hola soy ' + nameContact.value + ' y queria decir que ' + msgContact.value;
+        var mail = 'mailto: ' + emailContact.value + '?subject=' + subject + '&body=' + body;
+        window.location.href = mail;
     }
 }
 
 //cierro el modal de contacto
-cancelContact.addEventListener('click',closeModalContact);
-closeContact.addEventListener('click',closeModalContact);
+cancelContact.addEventListener('click', closeModalContact);
+closeContact.addEventListener('click', closeModalContact);
 function closeModalContact() {
-    modalContact.style.display='none';
+    modalContact.style.display = 'none';
 }
 
 //abro el modal de contacto
-btnContact.addEventListener('click',openContact);
+btnContact.addEventListener('click', openContact);
 function openContact() {
-    modalContact.style.display='block';
+    modalContact.style.display = 'block';
 }
 
 //validaciones
 //creo un mesaje de error
 function inputError(input, msg) {
     input.style.border = '1px solid red';
-    input.nextElementSibling.innerText =msg + '*';
+    input.nextElementSibling.innerText = msg + '*';
 }
 //cuando hago el focus borro el mensaje y el input no es mas rojo
 function clearError() {
@@ -115,42 +121,42 @@ function clearError() {
     this.style.border = '1px solid black';
 }
 
-nameContact.addEventListener('blur',valiAlphaNumeric);
-nameContact.addEventListener('focus',clearError);
+nameContact.addEventListener('blur', valiAlphaNumeric);
+nameContact.addEventListener('focus', clearError);
 //funcion que valida que el input del nombre sea alfanumerico
 function valiAlphaNumeric() {
     var regex = /^[a-z0-9]+$/i;
-    if (regex.test(nameContact.value) &&nameContact.value.length!==0) {
+    if (regex.test(nameContact.value) && nameContact.value.length !== 0) {
         return true;
     } else {
-        nameContact.nextElementSibling.innerText ='';
-        inputError(nameContact,'El nombre debe ser alfanumerico');
+        nameContact.nextElementSibling.innerText = '';
+        inputError(nameContact, 'El nombre debe ser alfanumerico');
         return false;
     }
 }
 
-emailContact.addEventListener('blur',valiEmail);
-emailContact.addEventListener('focus',clearError);
+emailContact.addEventListener('blur', valiEmail);
+emailContact.addEventListener('focus', clearError);
 //funcion que valida que el email tenga un formato correcto
 function valiEmail() {
-    var regex =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (regex.test(emailContact.value) &&emailContact.value.length!==0) {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (regex.test(emailContact.value) && emailContact.value.length !== 0) {
         return true;
     } else {
-        emailContact.nextElementSibling.innerText ='';
-        inputError(emailContact,'El email debe tener un formato valido');
+        emailContact.nextElementSibling.innerText = '';
+        inputError(emailContact, 'El email debe tener un formato valido');
         return false;
     }
 }
 
-msgContact.addEventListener('blur',valiMsgLength);
-msgContact.addEventListener('focus',clearError);
+msgContact.addEventListener('blur', valiMsgLength);
+msgContact.addEventListener('focus', clearError);
 function valiMsgLength() {
-    if (msgContact.value.length>5) {
+    if (msgContact.value.length > 5) {
         return true;
     } else {
-        msgContact.nextElementSibling.innerText ='';
-        inputError(msgContact,'El mensaje debe contener 5 caracteres min.');
+        msgContact.nextElementSibling.innerText = '';
+        inputError(msgContact, 'El mensaje debe contener 5 caracteres min.');
         return false;
     }
 }
@@ -314,27 +320,74 @@ function calcScore() {
 }
 
 /* MODAL RESTARTGAME */
-closeRestart.addEventListener('click',closeRestartGame);
+closeRestart.addEventListener('click', closeRestartGame);
 function closeRestartGame() {
-    modal.style.display='none';
-    
+    modal.style.display = 'none';
 }
 
 /* LOCAL STORAGE */
-
-function pushStorage() {
-    //traigo los storages
+//funcion que trae el local storage y lo guada en la variable storage
+function getRanking() {
+    //traigo el rankign del local storage
     if (localStorage.length !== 0) {
         storage = JSON.parse(localStorage.getItem('games'));
     }
+}
+
+//funcion que agrega un nueva nueva partida en el storage
+function pushStorage() {
+    getRanking();
     var game = {
         player: namePlayer,
         score: score,
         level: level,
         datetime: new Date().toLocaleString()
     };
-
     storage.push(game);
     //guardo los datos de la partida anterior
     localStorage.setItem('games', JSON.stringify(storage));
 }
+
+//funcion que muestra el ranking
+btnRanking.addEventListener('click', function () {
+    modalRanking.style.display = 'block';
+    orderByScore();
+});
+
+//funcion que muestra la tabla
+function showRanking() {
+    tableBody.innerHTML = '';
+    for (let index = 0; index < storage.length; index++) {
+        var game = storage[index];
+        var row = tableBody.insertRow();
+        row.insertCell(0).innerText = game.player;
+        row.insertCell(1).innerText = game.score;
+        row.insertCell(2).innerText = game.level;
+        row.insertCell(3).innerText = game.datetime;
+    }
+}
+
+theadScore.addEventListener('click', orderByScore);
+//funcion que ordena la tabla por puntuacion
+function orderByScore() {
+    getRanking();
+    storage.sort(function (a, b) {
+        return b.score - a.score;
+    });
+    showRanking();
+}
+
+theadDate.addEventListener('click', orderByDate);
+//funcion que ordena la tabla por fecha
+function orderByDate() {
+    getRanking();
+    console.log('deberia ordenar');
+    storage.sort(function (a, b) {
+        return Date.parse(b.datetime) - Date.parse(a.datetime);
+    });
+    showRanking();
+}
+
+closeRanking.addEventListener('click', function () {
+    modalRanking.style.display = 'none';
+});
