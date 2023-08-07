@@ -16,13 +16,13 @@
       <input type="text" name="userName" id="userName" placeholder="nombre de usuario">
       <button id="play" type="button" disabled>jugar</button>
     </form>
-    <nav>
-      <span class="spanModal" id="ranking">🏆</span>
-      <span class="spanModal" id="contact">📲</span>
-    </nav>
+    <div id="divButton">
+      <span class="spanModal" id="ranking">🏆 ranking</span>
+      <span class="spanModal" id="contact">📲 contacto</span>
+    </div>
   </header>
   <main>
-    <div>
+    <div id="divTimer">
       <h2 id="timeTittle">Tiempo transcurrido: </h2>
       <p id="time">0 segundos</p>
     </div>
@@ -37,6 +37,7 @@
       </div>
       <button id="startButton" disabled>Start Game</button>
     </section>
+    <p id="player">Jugador: </p>
     <p id="level">Nivel: 0</p>
     <p id="score">Puntaje: 0</p>
   </main>
