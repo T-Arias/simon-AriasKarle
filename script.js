@@ -16,7 +16,8 @@ var greenBtn = document.getElementById('green');
 var redBtn = document.getElementById('red');
 var blueBtn = document.getElementById('blue');
 var yellowBtn = document.getElementById('yellow');
-//puntuacion y nivel y nivel
+//puntuacion y nivel y jugador
+var playerHTML = document.getElementById('player');
 var levelHTML = document.getElementById('level');
 var scoreHTML = document.getElementById('score');
 //modal
@@ -55,6 +56,7 @@ inputName.addEventListener('keyup', namePlus);
 //funcion que escribe en el titulo el nombre apenas se escribe en el input
 function namePlus() {
     tittleHTML.innerText = 'Bienvenido: ' + inputName.value;
+    playerHTML.innerText = 'Jugador: ' + inputName.value;
     //se habilita el boton jugar cuando tiene 3 caracteres
     if (inputName.value.length >= 3) {
         btnPlay.disabled = false;
@@ -81,7 +83,6 @@ function play() {
     btnStart.disabled = false;
     tittleHTML.innerText = 'Simon game'
     startGame();
-    valiEmail(inputName);
 }
 
 /* FORMULARIO CONTACTO */
