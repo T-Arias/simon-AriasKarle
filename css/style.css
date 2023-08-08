@@ -203,6 +203,12 @@ footer{
 }
 
 /* MODAL RANKING */
+table{
+  margin-top: 5px;
+}
+tbody{
+  text-align: center;
+}
 #modalRanking{
   display: none;
   position: fixed;
@@ -221,10 +227,11 @@ footer{
   cursor: pointer;
 }
 
+
 @media(max-width:480px){
   /* HEADER */
   #userName{
-    width: 250px;
+    width: auto;
     border-radius: 50px;
     height: 20px;
     text-align: center;
