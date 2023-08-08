@@ -10,29 +10,18 @@ var modalContact = document.getElementById('modalContact');
 //boton contact
 var btnContact = document.getElementById('contact');
 
-sendContact.addEventListener('click', sendMail);
-//funcion que abre mail del sistema
-function sendMail() {
-    if (valiAlphaNumeric() && valiEmail() && valiMsgLength()) {
-        var subject = 'LPPA SIMON - Arias Karle';
-        var body = 'Hola soy ' + nameContact.value + ' y queria decir que ' + msgContact.value;
-        var mail = 'mailto: ' + emailContact.value + '?subject=' + subject + '&body=' + body;
-        window.location.href = mail;
-    };
-};
-
 //cierro el modal de contacto
-cancelContact.addEventListener('click', closeModalContact);
-closeContact.addEventListener('click', closeModalContact);
 function closeModalContact() {
     modalContact.style.display = 'none';
 };
+cancelContact.addEventListener('click', closeModalContact);
+closeContact.addEventListener('click', closeModalContact);
 
 //abro el modal de contacto
-btnContact.addEventListener('click', openContact);
 function openContact() {
     modalContact.style.display = 'block';
 };
+btnContact.addEventListener('click', openContact);
 
 //validaciones
 //creo un mesaje de error
@@ -46,8 +35,6 @@ function clearError() {
     this.style.border = '1px solid black';
 };
 
-nameContact.addEventListener('blur', valiAlphaNumeric);
-nameContact.addEventListener('focus', clearError);
 //funcion que valida que el input del nombre sea alfanumerico
 function valiAlphaNumeric() {
     var regex = /^[a-z0-9]+$/i;
@@ -59,9 +46,9 @@ function valiAlphaNumeric() {
         return false;
     };
 };
+nameContact.addEventListener('blur', valiAlphaNumeric);
+nameContact.addEventListener('focus', clearError);
 
-emailContact.addEventListener('blur', valiEmail);
-emailContact.addEventListener('focus', clearError);
 //funcion que valida que el email tenga un formato correcto
 function valiEmail() {
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,9 +60,9 @@ function valiEmail() {
         return false;
     };
 };
+emailContact.addEventListener('blur', valiEmail);
+emailContact.addEventListener('focus', clearError);
 
-msgContact.addEventListener('blur', valiMsgLength);
-msgContact.addEventListener('focus', clearError);
 function valiMsgLength() {
     if (msgContact.value.length > 5) {
         return true;
@@ -85,3 +72,16 @@ function valiMsgLength() {
         return false;
     };
 };
+msgContact.addEventListener('blur', valiMsgLength);
+msgContact.addEventListener('focus', clearError);
+
+//funcion que abre mail del sistema
+function sendMail() {
+    if (valiAlphaNumeric() && valiEmail() && valiMsgLength()) {
+        var subject = 'LPPA SIMON - Arias Karle';
+        var body = 'Hola soy ' + nameContact.value + ' y queria decir que ' + msgContact.value;
+        var mail = 'mailto: ' + emailContact.value + '?subject=' + subject + '&body=' + body;
+        window.location.href = mail;
+    };
+};
+sendContact.addEventListener('click', sendMail);
