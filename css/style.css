@@ -182,8 +182,8 @@ footer{
 
 /* MENSAJE DE ERROR */
 .condition{
-  display: flex;
-  justify-Content: flex-start;
+  display: none;
+  justify-Content: flex-end;
   margin: 0;
   margin-Top: 1.5px;
   margin-Bottom: -2.5px;
