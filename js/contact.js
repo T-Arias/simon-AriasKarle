@@ -25,13 +25,13 @@ btnContact.addEventListener('click', openContact);
 
 //validaciones
 //creo un mesaje de error
-function inputError(input, msg) {
+function inputError(input) {
     input.style.border = '1px solid red';
-    input.nextElementSibling.innerText = msg + '*';
+    input.nextElementSibling.style.display = 'flex';
 };
 //cuando hago el focus borro el mensaje y el input no es mas rojo
 function clearError() {
-    this.nextElementSibling.innerText = '';
+    this.nextElementSibling.style.display = 'none';
     this.style.border = '1px solid black';
 };
 
@@ -41,8 +41,8 @@ function valiAlphaNumeric() {
     if (regex.test(nameContact.value) && nameContact.value.length !== 0) {
         return true;
     } else {
-        nameContact.nextElementSibling.innerText = '';
-        inputError(nameContact, 'El nombre debe ser alfanumerico');
+        nameContact.nextElementSibling.style.display = 'none';
+        inputError(nameContact);
         return false;
     };
 };
@@ -55,8 +55,8 @@ function valiEmail() {
     if (regex.test(emailContact.value) && emailContact.value.length !== 0) {
         return true;
     } else {
-        emailContact.nextElementSibling.innerText = '';
-        inputError(emailContact, 'El email debe tener un formato valido');
+        emailContact.nextElementSibling.style.display = 'none';
+        inputError(emailContact);
         return false;
     };
 };
@@ -67,8 +67,8 @@ function valiMsgLength() {
     if (msgContact.value.length > 5) {
         return true;
     } else {
-        msgContact.nextElementSibling.innerText = '';
-        inputError(msgContact, 'El mensaje debe contener 5 caracteres min.');
+        msgContact.nextElementSibling.style.display = 'none';
+        inputError(msgContact);
         return false;
     };
 };
