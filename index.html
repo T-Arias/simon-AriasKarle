@@ -49,24 +49,24 @@
   <div id="modalContact" class="modal">
     <div class="modalContent">
       <div class="modalHeader">
-        <h2>Contacto</h2>
+        <h1>Contacto</h1>
         <span id="closeContact" class="close">x</span>
       </div>
       <form id="formCotact">
         <div>
           <label for="nameContact">Nombre:</label>
           <input type="text" placeholder="nombre y apellido" id="nameContact" required>
-          <p class="condition"></p>
+          <p class="condition">El nombre debe ser alfanumerico</p>
         </div>
         <div>
           <label for="emailContact">Email:</label>
           <input type="email" placeholder="@example.com" id="emailContact" required>
-          <p class="condition"></p>
+          <p class="condition">El email debe tener un formato valido</p>
         </div>
         <div id="divMsgForm">
           <label for="msgContact">Mensaje:</label>
           <textarea name="msgContact" id="msgContact" rows="8" required></textarea>
-          <p class="condition"></p>
+          <p class="condition">El mensaje debe contener 5 caracteres min.</p>
         </div>
         <div id="formBtn">
           <button type="button" id="cancelBtnContact">Cancelar</button>
