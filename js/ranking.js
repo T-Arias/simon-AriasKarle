@@ -1,10 +1,14 @@
 'use strict';
-//ranking
-var tableBody = document.getElementById('tableBody');
-var modalRanking = document.getElementById('modalRanking');
-var theadDate = document.getElementById('theadDate');
-var theadScore = document.getElementById('theadScore');
-var closeRanking = document.getElementById('closeRanking');
+//formulario contacto
+var nameContact = document.getElementById('nameContact');
+var emailContact = document.getElementById('emailContact');
+var msgContact = document.getElementById('msgContact');
+var sendContact = document.getElementById('sendBtnContact');
+var cancelContact = document.getElementById('cancelBtnContact');
+var closeContact = document.getElementById('closeContact');
+var modalContact = document.getElementById('modalContact');
+//boton ranking
+var btnRanking = document.getElementById('ranking');
 
 //funcion que trae el local storage y lo guada en la variable storage
 function getRanking() {
@@ -28,12 +32,6 @@ function pushStorage() {
     localStorage.setItem('games', JSON.stringify(storage));
 };
 
-//funcion que muestra el ranking
-btnRanking.addEventListener('click', function () {
-    modalRanking.style.display = 'block';
-    orderByScore();
-});
-
 //funcion que muestra la tabla
 function showRanking() {
     tableBody.innerHTML = '';
@@ -47,7 +45,6 @@ function showRanking() {
     };
 };
 
-theadScore.addEventListener('click', orderByScore);
 //funcion que ordena la tabla por puntuacion
 function orderByScore() {
     getRanking();
@@ -56,8 +53,8 @@ function orderByScore() {
     });
     showRanking();
 };
+theadScore.addEventListener('click', orderByScore);
 
-theadDate.addEventListener('click', orderByDate);
 //funcion que ordena la tabla por fecha
 function orderByDate() {
     getRanking();
@@ -66,7 +63,14 @@ function orderByDate() {
     });
     showRanking();
 };
+theadDate.addEventListener('click', orderByDate);
 
 closeRanking.addEventListener('click', function () {
     modalRanking.style.display = 'none';
+});
+
+//funcion que muestra el ranking
+btnRanking.addEventListener('click', function () {
+    modalRanking.style.display = 'block';
+    orderByScore();
 });
