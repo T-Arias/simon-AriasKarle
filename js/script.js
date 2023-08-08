@@ -73,8 +73,8 @@ function nameInput() {
         inputName.style.border = '1px solid red';
     } else {
         inputName.style.border = '1px solid black';
-    }
-}
+    };
+};
 
 //logica del boton jugar
 btnPlay.addEventListener('click', play);
@@ -82,9 +82,9 @@ function play() {
     formName.style.display = 'none';
     namePlayer = inputName.value;
     btnStart.disabled = false;
-    tittleHTML.innerText = 'Simon game'
+    tittleHTML.innerText = 'Simon game';
     startGame();
-}
+};
 
 /* FORMULARIO CONTACTO */
 sendContact.addEventListener('click', sendMail);
@@ -95,33 +95,33 @@ function sendMail() {
         var body = 'Hola soy ' + nameContact.value + ' y queria decir que ' + msgContact.value;
         var mail = 'mailto: ' + emailContact.value + '?subject=' + subject + '&body=' + body;
         window.location.href = mail;
-    }
-}
+    };
+};
 
 //cierro el modal de contacto
 cancelContact.addEventListener('click', closeModalContact);
 closeContact.addEventListener('click', closeModalContact);
 function closeModalContact() {
     modalContact.style.display = 'none';
-}
+};
 
 //abro el modal de contacto
 btnContact.addEventListener('click', openContact);
 function openContact() {
     modalContact.style.display = 'block';
-}
+};
 
 //validaciones
 //creo un mesaje de error
 function inputError(input, msg) {
     input.style.border = '1px solid red';
     input.nextElementSibling.innerText = msg + '*';
-}
+};
 //cuando hago el focus borro el mensaje y el input no es mas rojo
 function clearError() {
     this.nextElementSibling.innerText = '';
     this.style.border = '1px solid black';
-}
+};
 
 nameContact.addEventListener('blur', valiAlphaNumeric);
 nameContact.addEventListener('focus', clearError);
@@ -134,8 +134,8 @@ function valiAlphaNumeric() {
         nameContact.nextElementSibling.innerText = '';
         inputError(nameContact, 'El nombre debe ser alfanumerico');
         return false;
-    }
-}
+    };
+};
 
 emailContact.addEventListener('blur', valiEmail);
 emailContact.addEventListener('focus', clearError);
@@ -148,8 +148,8 @@ function valiEmail() {
         emailContact.nextElementSibling.innerText = '';
         inputError(emailContact, 'El email debe tener un formato valido');
         return false;
-    }
-}
+    };
+};
 
 msgContact.addEventListener('blur', valiMsgLength);
 msgContact.addEventListener('focus', clearError);
@@ -160,8 +160,8 @@ function valiMsgLength() {
         msgContact.nextElementSibling.innerText = '';
         inputError(msgContact, 'El mensaje debe contener 5 caracteres min.');
         return false;
-    }
-}
+    };
+};
 
 
 /* JUEGO */
@@ -189,7 +189,7 @@ function startGame() {
         time++;
         timeHTML.innerText = time + ' segundos';
     }, 1000);
-}
+};
 
 //funcion que muestra la secuencia
 function newSecuence(timeInterval) {
@@ -216,7 +216,7 @@ function newSecuence(timeInterval) {
             clearInterval(interval);
         }
     }, timeInterval);
-}
+};
 
 //Funcion que se ejecuta cuando quiero prender las luces del simon
 function light(arr, timeout) {
@@ -240,8 +240,8 @@ function light(arr, timeout) {
 
         default:
             break;
-    }
-}
+    };
+};
 
 //Vuelve a luz por defecto
 function defaultLight() {
@@ -249,12 +249,12 @@ function defaultLight() {
     btnSimon[1].style.backgroundColor = 'rgb(100,0, 0)';
     btnSimon[2].style.backgroundColor = 'rgb(100, 100, 0)';
     btnSimon[3].style.backgroundColor = 'rgb(0, 0, 100)';
-}
+};
 
 //Agrega un nuevo color a la secuencia
 function random() {
     randomArray.push(Math.floor(Math.random() * 4));
-}
+};
 
 //Verifico que las teclas seleccionadas cumplan con la secuencia generada
 greenBtn.addEventListener('click', btnSequence);
@@ -288,8 +288,8 @@ function btnSequence() {
 
     if (randomArray.length !== 0) {
         btnPlayerLogic();
-    }
-}
+    };
+};
 
 //funcion que valida los botones del jugador
 function btnPlayerLogic() {
@@ -310,21 +310,21 @@ function btnPlayerLogic() {
         calcScore();
         modalMsj.innerText = 'puntuación: ' + score + '\nnivel: ' + level;
         pushStorage();
-    }
-}
+    };
+};
 
 //funcion que calcula el puntaje final
 function calcScore() {
     var penalty = Math.floor(time / 30);
     score -= penalty;
     scoreHTML.innerText = 'puntaje: ' + score;
-}
+};
 
 /* MODAL RESTARTGAME */
 closeRestart.addEventListener('click', closeRestartGame);
 function closeRestartGame() {
     modal.style.display = 'none';
-}
+};
 
 /* LOCAL STORAGE */
 //funcion que trae el local storage y lo guada en la variable storage
@@ -332,8 +332,8 @@ function getRanking() {
     //traigo el rankign del local storage
     if (localStorage.length !== 0) {
         storage = JSON.parse(localStorage.getItem('games'));
-    }
-}
+    };
+};
 
 //funcion que agrega un nueva nueva partida en el storage
 function pushStorage() {
@@ -347,7 +347,7 @@ function pushStorage() {
     storage.push(game);
     //guardo los datos de la partida anterior
     localStorage.setItem('games', JSON.stringify(storage));
-}
+};
 
 //funcion que muestra el ranking
 btnRanking.addEventListener('click', function () {
@@ -365,8 +365,8 @@ function showRanking() {
         row.insertCell(1).innerText = game.score;
         row.insertCell(2).innerText = game.level;
         row.insertCell(3).innerText = game.datetime;
-    }
-}
+    };
+};
 
 theadScore.addEventListener('click', orderByScore);
 //funcion que ordena la tabla por puntuacion
@@ -376,7 +376,7 @@ function orderByScore() {
         return b.score - a.score;
     });
     showRanking();
-}
+};
 
 theadDate.addEventListener('click', orderByDate);
 //funcion que ordena la tabla por fecha
@@ -386,7 +386,7 @@ function orderByDate() {
         return Date.parse(b.datetime) - Date.parse(a.datetime);
     });
     showRanking();
-}
+};
 
 closeRanking.addEventListener('click', function () {
     modalRanking.style.display = 'none';
