@@ -104,6 +104,7 @@ function newSecuence(timeInterval) {
 //inicia el juego
 function startGame() {
     clearInterval(intervalTime);
+    btnStart.disabled=true;
     randomArray = [];
     inputArray = [];
     //cuando se reinicia la partida se restauran los valores que se muestran
@@ -149,6 +150,7 @@ function btnPlayerLogic() {
         calcScore();
         modalMsj.innerText = 'puntuación: ' + score + '\nnivel: ' + level;
         pushStorage();
+        btnStart.disabled = false;
     };
 };
 
@@ -216,7 +218,6 @@ inputName.addEventListener('blur', nameInput);
 function play() {
     formName.style.display = 'none';
     namePlayer = inputName.value;
-    btnStart.disabled = false;
     tittleHTML.innerText = 'Simon game';
     startGame();
 };
