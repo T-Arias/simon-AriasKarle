@@ -47,8 +47,8 @@ function namePlus() {
         btnPlay.disabled = false;
     } else {
         btnPlay.disabled = true;
-    }
-}
+    };
+};
 
 //cambio de color el borde del input
 inputName.addEventListener('blur', nameInput);
