@@ -358,7 +358,7 @@ btnRanking.addEventListener('click', function () {
 //funcion que muestra la tabla
 function showRanking() {
     tableBody.innerHTML = '';
-    for (let index = 0; index < storage.length; index++) {
+    for (var index = 0; index < storage.length; index++) {
         var game = storage[index];
         var row = tableBody.insertRow();
         row.insertCell(0).innerText = game.player;
