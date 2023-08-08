@@ -1,20 +1,18 @@
-body {
+body{
   margin: 0;
   padding: 0;
   background-color: rgb(255, 255, 255);
 }
-
 h2{
   margin-bottom: 5px;
 }
-
 p{
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
 /* HEADER */
-header {
+header{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,8 +21,7 @@ header {
   height: auto;
   width: 100%;
 }
-
-#formName {
+#formName{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,114 +30,98 @@ header {
   height: 100px;
   background-color: rgb(245, 245, 245);
 }
-
-#userName {
+#userName{
   width: 350px;
   border-radius: 50px;
   height: 20px;
   text-align: center;
 }
-
 #divButton{
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-
-.spanModal {
+.spanModal{
   cursor: pointer;
 }
 
 /* MAIN */
-main {
+main{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-
 #divTimer{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-#scores {
+#scores{
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 20px;
 }
-
-#gameBoard {
+#gameBoard{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: auto;
 }
-
-.row {
+.row{
   display: flex;
   flex-direction: row;
 }
-
-.buttons {
+.buttons{
   width: 175px;
   height: 175px;
   margin: 10px;
   cursor: pointer;
 }
-
-#startButton {
+#startButton{
   width: 100px;
   height: 100px;
   margin-top: 10px;
 }
-
-#green {
+#green{
   border-radius: 200px 0 0 0;
   background-color: rgb(0, 100, 0);
 }
-
 #red {
   border-radius: 0 200px 0 0;
   background-color: rgb(100, 0, 0);
 }
-
-#yellow {
+#yellow{
   border-radius: 0 0 0 200px;
   background-color: rgb(100, 100, 0);
 }
-
-#blue {
+#blue{
   border-radius: 0 0 200px 0;
   background-color: rgb(0, 0, 100);
-
 }
-
-#score {
+#score{
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: bold;
 }
 
 /* FOOTER */
-footer {
+footer{
   display: flex;
   justify-content: center;
   align-items: flex-end;
   height: 45px;
   background-color: rgb(17, 9, 52);
 }
-
-#linkGit {
+#linkGit{
   color: rgb(255, 232, 204);
 }
 
 /* MODAL */
-#modal {
+#modal{
   display: none;
   position: fixed;
   z-index: 1;
@@ -151,8 +132,7 @@ footer {
   padding-top: 150px;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-.modalContent {
+.modalContent{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,12 +143,10 @@ footer {
   border: 1px solid rgb(136, 136, 136);
   background-color: rgb(254, 254, 254);
 }
-
-.close {
+.close{
   cursor: pointer;
 }
-
-.modalHeader {
+.modalHeader{
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -177,8 +155,7 @@ footer {
 }
 
 /* MODAL DEL CONTACTO */
-
-#modalContact {
+#modalContact{
   display: none;
   position: fixed;
   z-index: 1;
@@ -189,25 +166,22 @@ footer {
   padding-top: 150px;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-
-#formCotact {
+#formCotact{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-end;
   height: 200px;
 }
-
-#divMsgForm {
+#divMsgForm{
   display: flex;
   flex-direction: column;
   width: 240px;
   height: 80px;
 }
 
-/* mensajes de error */
-.condition {
+/* MENSAJE DE ERROR */
+.condition{
   display: flex;
   justify-Content: flex-start;
   margin: 0;
@@ -217,7 +191,7 @@ footer {
 }
 
 /* MODAL RANKING */
-#modalRanking {
+#modalRanking{
   display: none;
   position: fixed;
   z-index: 1;
@@ -228,11 +202,9 @@ footer {
   padding-top: 150px;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-#theadScore {
+#theadScore{
   cursor: pointer;
 }
-
-#theadDate {
+#theadDate{
   cursor: pointer;
 }
