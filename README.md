@@ -3,7 +3,7 @@
 Este proyecto cumple con los requisitos funcionales para poder jugar al Simon (juego de memoria), guardando las partidas del jugador cada vez que este pierda.
 
 ## Pages 
-<a href="https://tomylov.github.io/simon-AriasKarle/" target="_blank">simon game</a>
+<a href="https://T-Arias.github.io/simon-AriasKarle/" target="_blank">simon game</a>
 
 ## Requisitos Obligatorios
 - Código prolijo y estricto (HTML5, CSS3 y ES5).
